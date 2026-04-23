@@ -11,4 +11,11 @@
     <ProjectReference Include="..\SportsClubPlatform.Domain\SportsClubPlatform.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Abstractions\" />
+    <Folder Include="Common\" />
+    <Folder Include="DTOs\" />
+    <Folder Include="Features\Transfers\" />
+  </ItemGroup>
+
 </Project>

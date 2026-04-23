@@ -16,4 +16,10 @@
     <ProjectReference Include="..\SportsClubPlatform.Infrastructure\SportsClubPlatform.Infrastructure.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Controllers\" />
+    <Folder Include="Extensions\" />
+    <Folder Include="Middleware\" />
+  </ItemGroup>
+
 </Project>
