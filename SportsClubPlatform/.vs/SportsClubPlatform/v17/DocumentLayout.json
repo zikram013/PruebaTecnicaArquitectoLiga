@@ -1,37 +1,12 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "D:\\Repositorios\\PruebaTecnicaArquitectoLiga\\PruebaTecnicaArquitectoLiga\\SportsClubPlatform\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{793139A4-8607-40C7-AC56-5159F763C0E2}|SportsClubPlatform.Infrastructure\\SportsClubPlatform.Infrastructure.csproj|d:\\repositorios\\pruebatecnicaarquitectoliga\\pruebatecnicaarquitectoliga\\sportsclubplatform\\sportsclubplatform.infrastructure\\sportsclubplatform.infrastructure.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{793139A4-8607-40C7-AC56-5159F763C0E2}|SportsClubPlatform.Infrastructure\\SportsClubPlatform.Infrastructure.csproj|solutionrelative:sportsclubplatform.infrastructure\\sportsclubplatform.infrastructure.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
-    }
-  ],
+  "Documents": [],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": [
-        {
-          "DockedWidth": 200,
-          "SelectedChildIndex": 0,
-          "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "SportsClubPlatform.Infrastructure",
-              "DocumentMoniker": "D:\\Repositorios\\PruebaTecnicaArquitectoLiga\\PruebaTecnicaArquitectoLiga\\SportsClubPlatform\\SportsClubPlatform.Infrastructure\\SportsClubPlatform.Infrastructure.csproj",
-              "RelativeDocumentMoniker": "SportsClubPlatform.Infrastructure\\SportsClubPlatform.Infrastructure.csproj",
-              "ToolTip": "D:\\Repositorios\\PruebaTecnicaArquitectoLiga\\PruebaTecnicaArquitectoLiga\\SportsClubPlatform\\SportsClubPlatform.Infrastructure\\SportsClubPlatform.Infrastructure.csproj",
-              "RelativeToolTip": "SportsClubPlatform.Infrastructure\\SportsClubPlatform.Infrastructure.csproj",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2026-04-23T08:46:44.037Z",
-              "EditorCaption": ""
-            }
-          ]
-        }
-      ]
+      "DocumentGroups": []
     }
   ]
 }
