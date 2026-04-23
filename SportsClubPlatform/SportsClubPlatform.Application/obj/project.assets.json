@@ -1,0 +1,122 @@
+{
+  "version": 3,
+  "targets": {
+    "net8.0": {
+      "SportsClubPlatform.Contracts/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "compile": {
+          "bin/placeholder/SportsClubPlatform.Contracts.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/SportsClubPlatform.Contracts.dll": {}
+        }
+      },
+      "SportsClubPlatform.Domain/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "compile": {
+          "bin/placeholder/SportsClubPlatform.Domain.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/SportsClubPlatform.Domain.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "SportsClubPlatform.Contracts/1.0.0": {
+      "type": "project",
+      "path": "../SportsClubPlatform.Contracts/SportsClubPlatform.Contracts.csproj",
+      "msbuildProject": "../SportsClubPlatform.Contracts/SportsClubPlatform.Contracts.csproj"
+    },
+    "SportsClubPlatform.Domain/1.0.0": {
+      "type": "project",
+      "path": "../SportsClubPlatform.Domain/SportsClubPlatform.Domain.csproj",
+      "msbuildProject": "../SportsClubPlatform.Domain/SportsClubPlatform.Domain.csproj"
+    }
+  },
+  "projectFileDependencyGroups": {
+    "net8.0": [
+      "SportsClubPlatform.Contracts >= 1.0.0",
+      "SportsClubPlatform.Domain >= 1.0.0"
+    ]
+  },
+  "packageFolders": {
+    "C:\\Users\\herna\\.nuget\\packages\\": {},
+    "E:\\ProgramasInstalados\\Ides\\MVS\\CompoToolsSdk\\NuGetPackages": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "D:\\Repositorios\\PruebaTecnicaArquitectoLiga\\PruebaTecnicaArquitectoLiga\\SportsClubPlatform\\SportsClubPlatform.Application\\SportsClubPlatform.Application.csproj",
+      "projectName": "SportsClubPlatform.Application",
+      "projectPath": "D:\\Repositorios\\PruebaTecnicaArquitectoLiga\\PruebaTecnicaArquitectoLiga\\SportsClubPlatform\\SportsClubPlatform.Application\\SportsClubPlatform.Application.csproj",
+      "packagesPath": "C:\\Users\\herna\\.nuget\\packages\\",
+      "outputPath": "D:\\Repositorios\\PruebaTecnicaArquitectoLiga\\PruebaTecnicaArquitectoLiga\\SportsClubPlatform\\SportsClubPlatform.Application\\obj\\",
+      "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "E:\\ProgramasInstalados\\Ides\\MVS\\CompoToolsSdk\\NuGetPackages"
+      ],
+      "configFilePaths": [
+        "C:\\Users\\herna\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+      ],
+      "originalTargetFrameworks": [
+        "net8.0"
+      ],
+      "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "projectReferences": {
+            "D:\\Repositorios\\PruebaTecnicaArquitectoLiga\\PruebaTecnicaArquitectoLiga\\SportsClubPlatform\\SportsClubPlatform.Contracts\\SportsClubPlatform.Contracts.csproj": {
+              "projectPath": "D:\\Repositorios\\PruebaTecnicaArquitectoLiga\\PruebaTecnicaArquitectoLiga\\SportsClubPlatform\\SportsClubPlatform.Contracts\\SportsClubPlatform.Contracts.csproj"
+            },
+            "D:\\Repositorios\\PruebaTecnicaArquitectoLiga\\PruebaTecnicaArquitectoLiga\\SportsClubPlatform\\SportsClubPlatform.Domain\\SportsClubPlatform.Domain.csproj": {
+              "projectPath": "D:\\Repositorios\\PruebaTecnicaArquitectoLiga\\PruebaTecnicaArquitectoLiga\\SportsClubPlatform\\SportsClubPlatform.Domain\\SportsClubPlatform.Domain.csproj"
+            }
+          }
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      },
+      "restoreAuditProperties": {
+        "enableAudit": "true",
+        "auditLevel": "low",
+        "auditMode": "direct"
+      },
+      "SdkAnalysisLevel": "9.0.100"
+    },
+    "frameworks": {
+      "net8.0": {
+        "targetAlias": "net8.0",
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48",
+          "net481"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "frameworkReferences": {
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          }
+        },
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.102/PortableRuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}
