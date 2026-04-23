@@ -1,0 +1,12 @@
+D:\Repositorios\PruebaTecnicaArquitectoLiga\PruebaTecnicaArquitectoLiga\SportsClubPlatform\SportsClubPlatform.Domain\bin\Debug\net8.0\SportsClubPlatform.Domain.deps.json
+D:\Repositorios\PruebaTecnicaArquitectoLiga\PruebaTecnicaArquitectoLiga\SportsClubPlatform\SportsClubPlatform.Domain\bin\Debug\net8.0\SportsClubPlatform.Domain.dll
+D:\Repositorios\PruebaTecnicaArquitectoLiga\PruebaTecnicaArquitectoLiga\SportsClubPlatform\SportsClubPlatform.Domain\bin\Debug\net8.0\SportsClubPlatform.Domain.pdb
+D:\Repositorios\PruebaTecnicaArquitectoLiga\PruebaTecnicaArquitectoLiga\SportsClubPlatform\SportsClubPlatform.Domain\obj\Debug\net8.0\SportsClubPlatform.Domain.GeneratedMSBuildEditorConfig.editorconfig
+D:\Repositorios\PruebaTecnicaArquitectoLiga\PruebaTecnicaArquitectoLiga\SportsClubPlatform\SportsClubPlatform.Domain\obj\Debug\net8.0\SportsClubPlatform.Domain.AssemblyInfoInputs.cache
+D:\Repositorios\PruebaTecnicaArquitectoLiga\PruebaTecnicaArquitectoLiga\SportsClubPlatform\SportsClubPlatform.Domain\obj\Debug\net8.0\SportsClubPlatform.Domain.AssemblyInfo.cs
+D:\Repositorios\PruebaTecnicaArquitectoLiga\PruebaTecnicaArquitectoLiga\SportsClubPlatform\SportsClubPlatform.Domain\obj\Debug\net8.0\SportsClubPlatform.Domain.csproj.CoreCompileInputs.cache
+D:\Repositorios\PruebaTecnicaArquitectoLiga\PruebaTecnicaArquitectoLiga\SportsClubPlatform\SportsClubPlatform.Domain\obj\Debug\net8.0\SportsClubPlatform.Domain.sourcelink.json
+D:\Repositorios\PruebaTecnicaArquitectoLiga\PruebaTecnicaArquitectoLiga\SportsClubPlatform\SportsClubPlatform.Domain\obj\Debug\net8.0\SportsClubPlatform.Domain.dll
+D:\Repositorios\PruebaTecnicaArquitectoLiga\PruebaTecnicaArquitectoLiga\SportsClubPlatform\SportsClubPlatform.Domain\obj\Debug\net8.0\refint\SportsClubPlatform.Domain.dll
+D:\Repositorios\PruebaTecnicaArquitectoLiga\PruebaTecnicaArquitectoLiga\SportsClubPlatform\SportsClubPlatform.Domain\obj\Debug\net8.0\SportsClubPlatform.Domain.pdb
+D:\Repositorios\PruebaTecnicaArquitectoLiga\PruebaTecnicaArquitectoLiga\SportsClubPlatform\SportsClubPlatform.Domain\obj\Debug\net8.0\ref\SportsClubPlatform.Domain.dll

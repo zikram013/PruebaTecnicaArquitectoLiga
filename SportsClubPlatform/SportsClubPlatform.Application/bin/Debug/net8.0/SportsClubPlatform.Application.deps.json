@@ -1,0 +1,53 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "SportsClubPlatform.Application/1.0.0": {
+        "dependencies": {
+          "SportsClubPlatform.Contracts": "1.0.0",
+          "SportsClubPlatform.Domain": "1.0.0"
+        },
+        "runtime": {
+          "SportsClubPlatform.Application.dll": {}
+        }
+      },
+      "SportsClubPlatform.Contracts/1.0.0": {
+        "runtime": {
+          "SportsClubPlatform.Contracts.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "SportsClubPlatform.Domain/1.0.0": {
+        "runtime": {
+          "SportsClubPlatform.Domain.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "SportsClubPlatform.Application/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "SportsClubPlatform.Contracts/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "SportsClubPlatform.Domain/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

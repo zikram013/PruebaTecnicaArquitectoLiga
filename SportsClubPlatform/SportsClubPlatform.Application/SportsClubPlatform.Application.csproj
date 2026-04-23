@@ -12,7 +12,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Abstractions\" />
     <Folder Include="Common\" />
     <Folder Include="DTOs\" />
     <Folder Include="Features\Transfers\" />

@@ -1,0 +1,57 @@
+[
+  {
+    "ContainingType": "SportsClubPlatform.Api.Controllers.TransfersController",
+    "Method": "SubmitTransferOffer",
+    "RelativePath": "api/Transfers",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "SportsClubPlatform.Contracts.Transfers.SubmitTransferOfferRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "SportsClubPlatform.Contracts.Transfers.TransferResponse",
+        "MediaTypes": [
+          "application/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SportsClubPlatform.Api.Controllers.TransfersController",
+    "Method": "GetById",
+    "RelativePath": "api/Transfers/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "SportsClubPlatform.Contracts.Transfers.TransferResponse",
+        "MediaTypes": [
+          "application/json"
+        ],
+        "StatusCode": 200
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "application/json"
+        ],
+        "StatusCode": 404
+      }
+    ]
+  }
+]
