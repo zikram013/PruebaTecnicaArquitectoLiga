@@ -13,13 +13,28 @@ namespace SportsClubPlatform.Domain.Enums
     {
         Draft = 0,
         OfferSubmitted = 1,
-        BudgetValidated = 2,
-        PlayerContractValidated = 3,
-        PaymentProcessed = 4,
-        SquadsUpdated = 5,
-        ContractGenerated = 6,
-        Completed = 7,
-        Failed = 8,
-        Compensated = 9
+
+        BudgetValidationRequested = 2,
+        BudgetValidated = 3,
+
+        PlayerContractValidationRequested = 4,
+        PlayerContractValidated = 5,
+
+        PaymentRequested = 6,
+        PaymentProcessed = 7,
+
+        SquadUpdateRequested = 8,
+        SquadsUpdated = 9,
+
+        ContractGenerationRequested = 10,
+        ContractGenerated = 11,
+
+        NotificationRequested = 12,
+        PartiesNotified = 13,
+
+        Completed = 14,
+        Failed = 15,
+        CompensationRequested = 16,
+        Compensated = 17
     }
 }
