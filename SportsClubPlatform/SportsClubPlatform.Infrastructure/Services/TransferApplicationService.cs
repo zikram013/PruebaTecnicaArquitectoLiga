@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MassTransit;
 using Microsoft.EntityFrameworkCore;
 using SportsClubPlatform.Application.Abstractions;
 using SportsClubPlatform.Contracts.Transfers;
+using SportsClubPlatform.Contracts.Transfers.Messages;
 using SportsClubPlatform.Domain.Entities;
 using SportsClubPlatform.Infrastructure.Persistence;
 
@@ -17,10 +14,14 @@ namespace SportsClubPlatform.Infrastructure.Services
     public sealed class TransferApplicationService : ITransferApplicationService
     {
         private readonly AppDbContext _dbContext;
+        private readonly IPublishEndpoint _publishEndpoint;
 
-        public TransferApplicationService(AppDbContext dbContext)
+        public TransferApplicationService(
+            AppDbContext dbContext,
+            IPublishEndpoint publishEndpoint)
         {
             _dbContext = dbContext;
+            _publishEndpoint = publishEndpoint;
         }
 
         public async Task<TransferResponse> SubmitTransferOfferAsync(
@@ -29,31 +30,17 @@ namespace SportsClubPlatform.Infrastructure.Services
         {
             ValidateRequest(request);
 
-            Club? destinationClub = await _dbContext.Clubs
-                .Include(x => x.Budget)
-                .SingleOrDefaultAsync(x => x.Id == request.DestinationClubId, cancellationToken);
+            Player player = await _dbContext.Players
+                .SingleOrDefaultAsync(x => x.Id == request.PlayerId, cancellationToken)
+                ?? throw new InvalidOperationException("Player was not found.");
 
-            if (destinationClub is null)
+            PlayerContract activeContract = await _dbContext.PlayerContracts
+                .SingleOrDefaultAsync(x => x.PlayerId == request.PlayerId && x.IsActive, cancellationToken)
+                ?? throw new InvalidOperationException("The player does not have an active contract.");
+
+            if (!activeContract.IsValidOn(DateTime.UtcNow))
             {
-                throw new InvalidOperationException("Destination club was not found.");
-            }
-
-            Player? player = await _dbContext.Players
-                .SingleOrDefaultAsync(x => x.Id == request.PlayerId, cancellationToken);
-
-            if (player is null)
-            {
-                throw new InvalidOperationException("Player was not found.");
-            }
-
-            PlayerContract? activeContract = await _dbContext.PlayerContracts
-                .SingleOrDefaultAsync(
-                    x => x.PlayerId == request.PlayerId && x.IsActive,
-                    cancellationToken);
-
-            if (activeContract is null || !activeContract.IsValidOn(DateTime.UtcNow))
-            {
-                throw new InvalidOperationException("The player does not have a valid active contract.");
+                throw new InvalidOperationException("The player active contract is not valid.");
             }
 
             int sourceClubId = activeContract.ClubId;
@@ -63,15 +50,16 @@ namespace SportsClubPlatform.Infrastructure.Services
                 throw new InvalidOperationException("Source and destination clubs must be different.");
             }
 
-            if (destinationClub.Budget is null)
+            bool destinationClubExists = await _dbContext.Clubs
+                .AnyAsync(x => x.Id == request.DestinationClubId, cancellationToken);
+
+            if (!destinationClubExists)
             {
-                throw new InvalidOperationException("Destination club does not have a configured budget.");
+                throw new InvalidOperationException("Destination club was not found.");
             }
 
-            destinationClub.Budget.Reserve(request.OfferAmount);
-
             Transfer transfer = Transfer.Create(
-                playerId: request.PlayerId,
+                playerId: player.Id,
                 sourceClubId: sourceClubId,
                 destinationClubId: request.DestinationClubId,
                 offerAmount: request.OfferAmount,
@@ -79,6 +67,16 @@ namespace SportsClubPlatform.Infrastructure.Services
 
             _dbContext.Transfers.Add(transfer);
             await _dbContext.SaveChangesAsync(cancellationToken);
+
+            await _publishEndpoint.Publish(
+                new TransferOfferSubmitted(
+                    TransferId: transfer.Id,
+                    PlayerId: transfer.PlayerId,
+                    SourceClubId: transfer.SourceClubId,
+                    DestinationClubId: transfer.DestinationClubId,
+                    OfferAmount: transfer.OfferAmount,
+                    SalaryProposed: transfer.SalaryProposed),
+                cancellationToken);
 
             return MapToResponse(transfer);
         }
