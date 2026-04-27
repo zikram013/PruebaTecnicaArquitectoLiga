@@ -97,9 +97,77 @@ namespace SportsClubPlatform.Domain.Entities
                 salaryProposed);
         }
 
-        public void MarkStatus(TransferStatus status)
+        public void MarkBudgetValidationRequested()
         {
-            Status = status;
+            MarkStatus(TransferStatus.BudgetValidationRequested);
+        }
+
+        public void MarkBudgetValidated()
+        {
+            MarkStatus(TransferStatus.BudgetValidated);
+        }
+
+        public void MarkPlayerContractValidationRequested()
+        {
+            MarkStatus(TransferStatus.PlayerContractValidationRequested);
+        }
+
+        public void MarkPlayerContractValidated()
+        {
+            MarkStatus(TransferStatus.PlayerContractValidated);
+        }
+
+        public void MarkPaymentRequested()
+        {
+            MarkStatus(TransferStatus.PaymentRequested);
+        }
+
+        public void MarkPaymentProcessed()
+        {
+            MarkStatus(TransferStatus.PaymentProcessed);
+        }
+
+        public void MarkSquadUpdateRequested()
+        {
+            MarkStatus(TransferStatus.SquadUpdateRequested);
+        }
+
+        public void MarkSquadsUpdated()
+        {
+            MarkStatus(TransferStatus.SquadsUpdated);
+        }
+
+        public void MarkContractGenerationRequested()
+        {
+            MarkStatus(TransferStatus.ContractGenerationRequested);
+        }
+
+        public void MarkContractGenerated()
+        {
+            MarkStatus(TransferStatus.ContractGenerated);
+        }
+
+        public void MarkNotificationRequested()
+        {
+            MarkStatus(TransferStatus.NotificationRequested);
+        }
+
+        public void MarkPartiesNotified()
+        {
+            MarkStatus(TransferStatus.PartiesNotified);
+        }
+
+        public void MarkCompleted()
+        {
+            MarkStatus(TransferStatus.Completed);
+        }
+
+        public void MarkCompensationRequested(string reason)
+        {
+            ArgumentException.ThrowIfNullOrWhiteSpace(reason);
+
+            Status = TransferStatus.CompensationRequested;
+            ErrorMessage = reason;
             LastUpdatedUtc = DateTime.UtcNow;
         }
 
@@ -114,7 +182,12 @@ namespace SportsClubPlatform.Domain.Entities
 
         public void MarkAsCompensated()
         {
-            Status = TransferStatus.Compensated;
+            MarkStatus(TransferStatus.Compensated);
+        }
+
+        private void MarkStatus(TransferStatus status)
+        {
+            Status = status;
             LastUpdatedUtc = DateTime.UtcNow;
         }
     }
