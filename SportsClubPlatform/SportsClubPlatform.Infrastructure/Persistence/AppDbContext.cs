@@ -23,6 +23,10 @@ namespace SportsClubPlatform.Infrastructure.Persistence
         public DbSet<Player> Players => Set<Player>();
         public DbSet<PlayerContract> PlayerContracts => Set<PlayerContract>();
         public DbSet<Transfer> Transfers => Set<Transfer>();
+        public DbSet<TransferAuditEntry> TransferAuditEntries => Set<TransferAuditEntry>();
+        public DbSet<Payment> Payments => Set<Payment>();
+        public DbSet<GeneratedContract> GeneratedContracts => Set<GeneratedContract>();
+        public DbSet<NotificationLog> NotificationLogs => Set<NotificationLog>();
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

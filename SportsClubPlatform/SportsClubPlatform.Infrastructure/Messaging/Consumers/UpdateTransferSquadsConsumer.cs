@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using SportsClubPlatform.Contracts.Transfers.Messages;
 using SportsClubPlatform.Infrastructure.Messaging.Common;
 using SportsClubPlatform.Infrastructure.Persistence;
+using SportsClubPlatform.Infrastructure.Services.Auditing;
 
 namespace SportsClubPlatform.Infrastructure.Messaging.Consumers
 {
@@ -17,10 +18,14 @@ namespace SportsClubPlatform.Infrastructure.Messaging.Consumers
     public sealed class UpdateTransferSquadsConsumer : IConsumer<UpdateTransferSquads>
     {
         private readonly AppDbContext _dbContext;
+        private readonly ITransferAuditService _auditService;
 
-        public UpdateTransferSquadsConsumer(AppDbContext dbContext)
+        public UpdateTransferSquadsConsumer(
+            AppDbContext dbContext,
+            ITransferAuditService auditService)
         {
             _dbContext = dbContext;
+            _auditService = auditService;
         }
 
         public async Task Consume(ConsumeContext<UpdateTransferSquads> context)
@@ -41,6 +46,13 @@ namespace SportsClubPlatform.Infrastructure.Messaging.Consumers
                 transfer.MarkAsFailed(reason);
                 await _dbContext.SaveChangesAsync(context.CancellationToken);
 
+                await _auditService.AddAsync(
+                    message.TransferId,
+                    "Squad Update",
+                    "Failed",
+                    reason,
+                    context.CancellationToken);
+
                 await context.Publish(
                     new TransferSquadUpdateFailed(message.TransferId, reason),
                     context.CancellationToken);
@@ -52,6 +64,13 @@ namespace SportsClubPlatform.Infrastructure.Messaging.Consumers
             transfer.MarkSquadsUpdated();
 
             await _dbContext.SaveChangesAsync(context.CancellationToken);
+
+            await _auditService.AddAsync(
+                message.TransferId,
+                "Squad Update",
+                "Success",
+                $"Player {message.PlayerId} moved to club {message.DestinationClubId}.",
+                context.CancellationToken);
 
             await context.Publish(
                 new TransferSquadsUpdated(message.TransferId),

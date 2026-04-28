@@ -9,6 +9,7 @@ using SportsClubPlatform.Contracts.Transfers.Messages;
 using SportsClubPlatform.Domain.Entities;
 using SportsClubPlatform.Infrastructure.Messaging.Common;
 using SportsClubPlatform.Infrastructure.Persistence;
+using SportsClubPlatform.Infrastructure.Services.Auditing;
 
 namespace SportsClubPlatform.Infrastructure.Messaging.Consumers
 {
@@ -18,10 +19,14 @@ namespace SportsClubPlatform.Infrastructure.Messaging.Consumers
     public sealed class GenerateTransferContractConsumer : IConsumer<GenerateTransferContract>
     {
         private readonly AppDbContext _dbContext;
+        private readonly ITransferAuditService _auditService;
 
-        public GenerateTransferContractConsumer(AppDbContext dbContext)
+        public GenerateTransferContractConsumer(
+            AppDbContext dbContext,
+            ITransferAuditService auditService)
         {
             _dbContext = dbContext;
+            _auditService = auditService;
         }
 
         public async Task Consume(ConsumeContext<GenerateTransferContract> context)
@@ -38,6 +43,13 @@ namespace SportsClubPlatform.Infrastructure.Messaging.Consumers
 
                 transfer.MarkAsFailed(reason);
                 await _dbContext.SaveChangesAsync(context.CancellationToken);
+
+                await _auditService.AddAsync(
+                    message.TransferId,
+                    "Contract Generation",
+                    "Failed",
+                    reason,
+                    context.CancellationToken);
 
                 await context.Publish(
                     new TransferContractGenerationFailed(message.TransferId, reason),
@@ -63,11 +75,26 @@ namespace SportsClubPlatform.Infrastructure.Messaging.Consumers
                 annualSalary: message.SalaryProposed,
                 isActive: true);
 
+            GeneratedContract generatedContract = new(
+                transferId: message.TransferId,
+                playerId: message.PlayerId,
+                destinationClubId: message.DestinationClubId,
+                annualSalary: message.SalaryProposed,
+                documentReference: $"TR-{message.TransferId}-{DateTime.UtcNow:yyyyMMddHHmmss}");
+
             _dbContext.PlayerContracts.Add(newContract);
+            _dbContext.GeneratedContracts.Add(generatedContract);
 
             transfer.MarkContractGenerated();
 
             await _dbContext.SaveChangesAsync(context.CancellationToken);
+
+            await _auditService.AddAsync(
+                message.TransferId,
+                "Contract Generation",
+                "Success",
+                $"Generated contract reference {generatedContract.DocumentReference}.",
+                context.CancellationToken);
 
             await context.Publish(
                 new TransferContractGenerated(message.TransferId),

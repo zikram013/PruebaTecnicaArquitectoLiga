@@ -5,8 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 using MassTransit;
 using SportsClubPlatform.Contracts.Transfers.Messages;
+using SportsClubPlatform.Domain.Entities;
 using SportsClubPlatform.Infrastructure.Messaging.Common;
 using SportsClubPlatform.Infrastructure.Persistence;
+using SportsClubPlatform.Infrastructure.Services.Auditing;
 
 namespace SportsClubPlatform.Infrastructure.Messaging.Consumers
 {
@@ -16,10 +18,14 @@ namespace SportsClubPlatform.Infrastructure.Messaging.Consumers
     public sealed class ProcessTransferPaymentConsumer : IConsumer<ProcessTransferPayment>
     {
         private readonly AppDbContext _dbContext;
+        private readonly ITransferAuditService _auditService;
 
-        public ProcessTransferPaymentConsumer(AppDbContext dbContext)
+        public ProcessTransferPaymentConsumer(
+            AppDbContext dbContext,
+            ITransferAuditService auditService)
         {
             _dbContext = dbContext;
+            _auditService = auditService;
         }
 
         public async Task Consume(ConsumeContext<ProcessTransferPayment> context)
@@ -37,6 +43,13 @@ namespace SportsClubPlatform.Infrastructure.Messaging.Consumers
                 transfer.MarkAsFailed(reason);
                 await _dbContext.SaveChangesAsync(context.CancellationToken);
 
+                await _auditService.AddAsync(
+                    message.TransferId,
+                    "Payment Processing",
+                    "Failed",
+                    reason,
+                    context.CancellationToken);
+
                 await context.Publish(
                     new TransferPaymentFailed(message.TransferId, reason),
                     context.CancellationToken);
@@ -44,9 +57,25 @@ namespace SportsClubPlatform.Infrastructure.Messaging.Consumers
                 return;
             }
 
+            Payment payment = new(
+                transferId: message.TransferId,
+                sourceClubId: message.SourceClubId,
+                destinationClubId: message.DestinationClubId,
+                amount: message.Amount,
+                currency: "EUR");
+
+            _dbContext.Payments.Add(payment);
+
             transfer.MarkPaymentProcessed();
 
             await _dbContext.SaveChangesAsync(context.CancellationToken);
+
+            await _auditService.AddAsync(
+                message.TransferId,
+                "Payment Processing",
+                "Success",
+                $"Payment processed for amount {message.Amount}.",
+                context.CancellationToken);
 
             await context.Publish(
                 new TransferPaymentProcessed(message.TransferId),

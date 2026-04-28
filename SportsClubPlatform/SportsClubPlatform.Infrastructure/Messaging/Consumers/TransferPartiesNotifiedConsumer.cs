@@ -7,6 +7,7 @@ using MassTransit;
 using SportsClubPlatform.Contracts.Transfers.Messages;
 using SportsClubPlatform.Infrastructure.Messaging.Common;
 using SportsClubPlatform.Infrastructure.Persistence;
+using SportsClubPlatform.Infrastructure.Services.Auditing;
 
 namespace SportsClubPlatform.Infrastructure.Messaging.Consumers
 {
@@ -16,10 +17,14 @@ namespace SportsClubPlatform.Infrastructure.Messaging.Consumers
     public sealed class TransferPartiesNotifiedConsumer : IConsumer<TransferPartiesNotified>
     {
         private readonly AppDbContext _dbContext;
+        private readonly ITransferAuditService _auditService;
 
-        public TransferPartiesNotifiedConsumer(AppDbContext dbContext)
+        public TransferPartiesNotifiedConsumer(
+            AppDbContext dbContext,
+            ITransferAuditService auditService)
         {
             _dbContext = dbContext;
+            _auditService = auditService;
         }
 
         public async Task Consume(ConsumeContext<TransferPartiesNotified> context)
@@ -31,6 +36,13 @@ namespace SportsClubPlatform.Infrastructure.Messaging.Consumers
             transfer.MarkCompleted();
 
             await _dbContext.SaveChangesAsync(context.CancellationToken);
+
+            await _auditService.AddAsync(
+                context.Message.TransferId,
+                "Transfer Completion",
+                "Success",
+                "Transfer process completed successfully.",
+                context.CancellationToken);
         }
     }
 }

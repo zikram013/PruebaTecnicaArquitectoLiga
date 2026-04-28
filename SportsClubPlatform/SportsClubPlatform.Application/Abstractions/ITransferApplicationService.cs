@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SportsClubPlatform.Contracts.Transfers;
+using SportsClubPlatform.Contracts.Transfers.Audit;
 
 namespace SportsClubPlatform.Application.Abstractions
 {
@@ -18,6 +19,10 @@ namespace SportsClubPlatform.Application.Abstractions
 
         Task<TransferResponse?> GetByIdAsync(
             int id,
+            CancellationToken cancellationToken = default);
+
+        Task<IReadOnlyCollection<TransferAuditEntryResponse>> GetAuditTimelineAsync(
+            int transferId,
             CancellationToken cancellationToken = default);
     }
 }

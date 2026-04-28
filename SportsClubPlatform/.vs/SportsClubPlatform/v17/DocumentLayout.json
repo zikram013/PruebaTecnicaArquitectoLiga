@@ -3,20 +3,16 @@
   "WorkspaceRootPath": "D:\\Repositorios\\PruebaTecnicaArquitectoLiga\\PruebaTecnicaArquitectoLiga\\SportsClubPlatform\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{793139A4-8607-40C7-AC56-5159F763C0E2}|SportsClubPlatform.Infrastructure\\SportsClubPlatform.Infrastructure.csproj|d:\\repositorios\\pruebatecnicaarquitectoliga\\pruebatecnicaarquitectoliga\\sportsclubplatform\\sportsclubplatform.infrastructure\\persistence\\configurations\\generatedcontractconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{793139A4-8607-40C7-AC56-5159F763C0E2}|SportsClubPlatform.Infrastructure\\SportsClubPlatform.Infrastructure.csproj|solutionrelative:sportsclubplatform.infrastructure\\persistence\\configurations\\generatedcontractconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{793139A4-8607-40C7-AC56-5159F763C0E2}|SportsClubPlatform.Infrastructure\\SportsClubPlatform.Infrastructure.csproj|d:\\repositorios\\pruebatecnicaarquitectoliga\\pruebatecnicaarquitectoliga\\sportsclubplatform\\sportsclubplatform.infrastructure\\messaging\\consumers\\compensatetransferconsumer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{793139A4-8607-40C7-AC56-5159F763C0E2}|SportsClubPlatform.Infrastructure\\SportsClubPlatform.Infrastructure.csproj|solutionrelative:sportsclubplatform.infrastructure\\messaging\\consumers\\compensatetransferconsumer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{793139A4-8607-40C7-AC56-5159F763C0E2}|SportsClubPlatform.Infrastructure\\SportsClubPlatform.Infrastructure.csproj|d:\\repositorios\\pruebatecnicaarquitectoliga\\pruebatecnicaarquitectoliga\\sportsclubplatform\\sportsclubplatform.infrastructure\\messaging\\consumers\\transferfailureconsumer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{793139A4-8607-40C7-AC56-5159F763C0E2}|SportsClubPlatform.Infrastructure\\SportsClubPlatform.Infrastructure.csproj|solutionrelative:sportsclubplatform.infrastructure\\messaging\\consumers\\transferfailureconsumer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{185B744A-5E41-483D-974A-249DEBB52B73}|SportsClubPlatform.Api\\SportsClubPlatform.Api.csproj|d:\\repositorios\\pruebatecnicaarquitectoliga\\pruebatecnicaarquitectoliga\\sportsclubplatform\\sportsclubplatform.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{185B744A-5E41-483D-974A-249DEBB52B73}|SportsClubPlatform.Api\\SportsClubPlatform.Api.csproj|solutionrelative:sportsclubplatform.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{793139A4-8607-40C7-AC56-5159F763C0E2}|SportsClubPlatform.Infrastructure\\SportsClubPlatform.Infrastructure.csproj|d:\\repositorios\\pruebatecnicaarquitectoliga\\pruebatecnicaarquitectoliga\\sportsclubplatform\\sportsclubplatform.infrastructure\\extensions\\servicecollectionextensions.cs.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{793139A4-8607-40C7-AC56-5159F763C0E2}|SportsClubPlatform.Infrastructure\\SportsClubPlatform.Infrastructure.csproj|solutionrelative:sportsclubplatform.infrastructure\\extensions\\servicecollectionextensions.cs.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{793139A4-8607-40C7-AC56-5159F763C0E2}|SportsClubPlatform.Infrastructure\\SportsClubPlatform.Infrastructure.csproj|d:\\repositorios\\pruebatecnicaarquitectoliga\\pruebatecnicaarquitectoliga\\sportsclubplatform\\sportsclubplatform.infrastructure\\messaging\\consumers\\transferpartiesnotifiedconsumer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{793139A4-8607-40C7-AC56-5159F763C0E2}|SportsClubPlatform.Infrastructure\\SportsClubPlatform.Infrastructure.csproj|solutionrelative:sportsclubplatform.infrastructure\\messaging\\consumers\\transferpartiesnotifiedconsumer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -31,53 +27,40 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "CompensateTransferConsumer.cs",
-              "DocumentMoniker": "D:\\Repositorios\\PruebaTecnicaArquitectoLiga\\PruebaTecnicaArquitectoLiga\\SportsClubPlatform\\SportsClubPlatform.Infrastructure\\Messaging\\Consumers\\CompensateTransferConsumer.cs",
-              "RelativeDocumentMoniker": "SportsClubPlatform.Infrastructure\\Messaging\\Consumers\\CompensateTransferConsumer.cs",
-              "ToolTip": "D:\\Repositorios\\PruebaTecnicaArquitectoLiga\\PruebaTecnicaArquitectoLiga\\SportsClubPlatform\\SportsClubPlatform.Infrastructure\\Messaging\\Consumers\\CompensateTransferConsumer.cs",
-              "RelativeToolTip": "SportsClubPlatform.Infrastructure\\Messaging\\Consumers\\CompensateTransferConsumer.cs",
-              "ViewState": "AgIAABYAAAAAAAAAAAAnwCUAAAANAAAAAAAAAA==",
+              "Title": "GeneratedContractConfiguration.cs",
+              "DocumentMoniker": "D:\\Repositorios\\PruebaTecnicaArquitectoLiga\\PruebaTecnicaArquitectoLiga\\SportsClubPlatform\\SportsClubPlatform.Infrastructure\\Persistence\\Configurations\\GeneratedContractConfiguration.cs",
+              "RelativeDocumentMoniker": "SportsClubPlatform.Infrastructure\\Persistence\\Configurations\\GeneratedContractConfiguration.cs",
+              "ToolTip": "D:\\Repositorios\\PruebaTecnicaArquitectoLiga\\PruebaTecnicaArquitectoLiga\\SportsClubPlatform\\SportsClubPlatform.Infrastructure\\Persistence\\Configurations\\GeneratedContractConfiguration.cs",
+              "RelativeToolTip": "SportsClubPlatform.Infrastructure\\Persistence\\Configurations\\GeneratedContractConfiguration.cs",
+              "ViewState": "AgIAABYAAAAAAAAAAAAewCkAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-27T15:06:24.59Z",
+              "WhenOpened": "2026-04-28T14:58:27.924Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "TransferFailureConsumer.cs",
-              "DocumentMoniker": "D:\\Repositorios\\PruebaTecnicaArquitectoLiga\\PruebaTecnicaArquitectoLiga\\SportsClubPlatform\\SportsClubPlatform.Infrastructure\\Messaging\\Consumers\\TransferFailureConsumer.cs",
-              "RelativeDocumentMoniker": "SportsClubPlatform.Infrastructure\\Messaging\\Consumers\\TransferFailureConsumer.cs",
-              "ToolTip": "D:\\Repositorios\\PruebaTecnicaArquitectoLiga\\PruebaTecnicaArquitectoLiga\\SportsClubPlatform\\SportsClubPlatform.Infrastructure\\Messaging\\Consumers\\TransferFailureConsumer.cs",
-              "RelativeToolTip": "SportsClubPlatform.Infrastructure\\Messaging\\Consumers\\TransferFailureConsumer.cs",
-              "ViewState": "AgIAACsAAAAAAAAAAAAnwD0AAAABAAAAAAAAAA==",
+              "Title": "CompensateTransferConsumer.cs",
+              "DocumentMoniker": "D:\\Repositorios\\PruebaTecnicaArquitectoLiga\\PruebaTecnicaArquitectoLiga\\SportsClubPlatform\\SportsClubPlatform.Infrastructure\\Messaging\\Consumers\\CompensateTransferConsumer.cs",
+              "RelativeDocumentMoniker": "SportsClubPlatform.Infrastructure\\Messaging\\Consumers\\CompensateTransferConsumer.cs",
+              "ToolTip": "D:\\Repositorios\\PruebaTecnicaArquitectoLiga\\PruebaTecnicaArquitectoLiga\\SportsClubPlatform\\SportsClubPlatform.Infrastructure\\Messaging\\Consumers\\CompensateTransferConsumer.cs",
+              "RelativeToolTip": "SportsClubPlatform.Infrastructure\\Messaging\\Consumers\\CompensateTransferConsumer.cs",
+              "ViewState": "AgIAAEwAAAAAAAAAAAAuwGAAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-27T15:06:14Z",
+              "WhenOpened": "2026-04-28T14:57:35.207Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "Program.cs",
-              "DocumentMoniker": "D:\\Repositorios\\PruebaTecnicaArquitectoLiga\\PruebaTecnicaArquitectoLiga\\SportsClubPlatform\\SportsClubPlatform.Api\\Program.cs",
-              "RelativeDocumentMoniker": "SportsClubPlatform.Api\\Program.cs",
-              "ToolTip": "D:\\Repositorios\\PruebaTecnicaArquitectoLiga\\PruebaTecnicaArquitectoLiga\\SportsClubPlatform\\SportsClubPlatform.Api\\Program.cs",
-              "RelativeToolTip": "SportsClubPlatform.Api\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB0AAAAKAAAAAAAAAA==",
+              "Title": "TransferPartiesNotifiedConsumer.cs",
+              "DocumentMoniker": "D:\\Repositorios\\PruebaTecnicaArquitectoLiga\\PruebaTecnicaArquitectoLiga\\SportsClubPlatform\\SportsClubPlatform.Infrastructure\\Messaging\\Consumers\\TransferPartiesNotifiedConsumer.cs",
+              "RelativeDocumentMoniker": "SportsClubPlatform.Infrastructure\\Messaging\\Consumers\\TransferPartiesNotifiedConsumer.cs",
+              "ToolTip": "D:\\Repositorios\\PruebaTecnicaArquitectoLiga\\PruebaTecnicaArquitectoLiga\\SportsClubPlatform\\SportsClubPlatform.Infrastructure\\Messaging\\Consumers\\TransferPartiesNotifiedConsumer.cs",
+              "RelativeToolTip": "SportsClubPlatform.Infrastructure\\Messaging\\Consumers\\TransferPartiesNotifiedConsumer.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAQwC4AAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-27T15:04:29.122Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "ServiceCollectionExtensions.cs.cs",
-              "DocumentMoniker": "D:\\Repositorios\\PruebaTecnicaArquitectoLiga\\PruebaTecnicaArquitectoLiga\\SportsClubPlatform\\SportsClubPlatform.Infrastructure\\Extensions\\ServiceCollectionExtensions.cs.cs",
-              "RelativeDocumentMoniker": "SportsClubPlatform.Infrastructure\\Extensions\\ServiceCollectionExtensions.cs.cs",
-              "ToolTip": "D:\\Repositorios\\PruebaTecnicaArquitectoLiga\\PruebaTecnicaArquitectoLiga\\SportsClubPlatform\\SportsClubPlatform.Infrastructure\\Extensions\\ServiceCollectionExtensions.cs.cs",
-              "RelativeToolTip": "SportsClubPlatform.Infrastructure\\Extensions\\ServiceCollectionExtensions.cs.cs",
-              "ViewState": "AgIAABAAAAAAAAAAAAA1wAcAAAAxAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-27T15:03:55.503Z",
+              "WhenOpened": "2026-04-28T14:57:17.181Z",
               "EditorCaption": ""
             }
           ]

@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using SportsClubPlatform.Contracts.Transfers.Messages;
 using SportsClubPlatform.Infrastructure.Messaging.Common;
 using SportsClubPlatform.Infrastructure.Persistence;
+using SportsClubPlatform.Infrastructure.Services.Auditing;
 
 namespace SportsClubPlatform.Infrastructure.Messaging.Consumers
 {
@@ -17,10 +18,14 @@ namespace SportsClubPlatform.Infrastructure.Messaging.Consumers
     public sealed class ValidatePlayerContractConsumer : IConsumer<ValidatePlayerContract>
     {
         private readonly AppDbContext _dbContext;
+        private readonly ITransferAuditService _auditService;
 
-        public ValidatePlayerContractConsumer(AppDbContext dbContext)
+        public ValidatePlayerContractConsumer(
+            AppDbContext dbContext,
+            ITransferAuditService auditService)
         {
             _dbContext = dbContext;
+            _auditService = auditService;
         }
 
         public async Task Consume(ConsumeContext<ValidatePlayerContract> context)
@@ -46,6 +51,13 @@ namespace SportsClubPlatform.Infrastructure.Messaging.Consumers
                 transfer.MarkAsFailed(reason);
                 await _dbContext.SaveChangesAsync(context.CancellationToken);
 
+                await _auditService.AddAsync(
+                    message.TransferId,
+                    "Player Contract Validation",
+                    "Failed",
+                    reason,
+                    context.CancellationToken);
+
                 await context.Publish(
                     new PlayerContractValidationFailed(message.TransferId, reason),
                     context.CancellationToken);
@@ -55,6 +67,13 @@ namespace SportsClubPlatform.Infrastructure.Messaging.Consumers
 
             transfer.MarkPlayerContractValidated();
             await _dbContext.SaveChangesAsync(context.CancellationToken);
+
+            await _auditService.AddAsync(
+                message.TransferId,
+                "Player Contract Validation",
+                "Success",
+                "Player active contract is valid.",
+                context.CancellationToken);
 
             await context.Publish(
                 new PlayerContractValidated(message.TransferId),

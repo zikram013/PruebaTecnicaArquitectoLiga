@@ -2,9 +2,11 @@
 using Microsoft.EntityFrameworkCore;
 using SportsClubPlatform.Application.Abstractions;
 using SportsClubPlatform.Contracts.Transfers;
+using SportsClubPlatform.Contracts.Transfers.Audit;
 using SportsClubPlatform.Contracts.Transfers.Messages;
 using SportsClubPlatform.Domain.Entities;
 using SportsClubPlatform.Infrastructure.Persistence;
+using SportsClubPlatform.Infrastructure.Services.Auditing;
 
 namespace SportsClubPlatform.Infrastructure.Services
 {
@@ -15,13 +17,16 @@ namespace SportsClubPlatform.Infrastructure.Services
     {
         private readonly AppDbContext _dbContext;
         private readonly IPublishEndpoint _publishEndpoint;
+        private readonly ITransferAuditService _auditService;
 
         public TransferApplicationService(
             AppDbContext dbContext,
-            IPublishEndpoint publishEndpoint)
+            IPublishEndpoint publishEndpoint,
+            ITransferAuditService auditService)
         {
             _dbContext = dbContext;
             _publishEndpoint = publishEndpoint;
+            _auditService = auditService;
         }
 
         public async Task<TransferResponse> SubmitTransferOfferAsync(
@@ -68,6 +73,13 @@ namespace SportsClubPlatform.Infrastructure.Services
             _dbContext.Transfers.Add(transfer);
             await _dbContext.SaveChangesAsync(cancellationToken);
 
+            await _auditService.AddAsync(
+                transfer.Id,
+                "Offer Submission",
+                "Success",
+                $"Transfer offer submitted for player {transfer.PlayerId}.",
+                cancellationToken);
+
             await _publishEndpoint.Publish(
                 new TransferOfferSubmitted(
                     TransferId: transfer.Id,
@@ -90,6 +102,26 @@ namespace SportsClubPlatform.Infrastructure.Services
                 .SingleOrDefaultAsync(x => x.Id == id, cancellationToken);
 
             return transfer is null ? null : MapToResponse(transfer);
+        }
+
+        public async Task<IReadOnlyCollection<TransferAuditEntryResponse>> GetAuditTimelineAsync(
+            int transferId,
+            CancellationToken cancellationToken = default)
+        {
+            return await _dbContext.TransferAuditEntries
+                .AsNoTracking()
+                .Where(x => x.TransferId == transferId)
+                .OrderBy(x => x.CreatedAtUtc)
+                .Select(x => new TransferAuditEntryResponse
+                {
+                    Id = x.Id,
+                    TransferId = x.TransferId,
+                    Step = x.Step,
+                    Status = x.Status,
+                    Message = x.Message,
+                    CreatedAtUtc = x.CreatedAtUtc
+                })
+                .ToListAsync(cancellationToken);
         }
 
         private static void ValidateRequest(SubmitTransferOfferRequest request)

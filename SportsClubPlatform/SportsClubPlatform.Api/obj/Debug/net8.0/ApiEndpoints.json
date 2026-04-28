@@ -53,5 +53,29 @@
         "StatusCode": 404
       }
     ]
+  },
+  {
+    "ContainingType": "SportsClubPlatform.Api.Controllers.TransfersController",
+    "Method": "GetAuditTimeline",
+    "RelativePath": "api/Transfers/{id}/audit",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IReadOnlyCollection\u00601[[SportsClubPlatform.Contracts.Transfers.Audit.TransferAuditEntryResponse, SportsClubPlatform.Contracts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "application/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
   }
 ]

@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using SportsClubPlatform.Application.Abstractions;
 using SportsClubPlatform.Contracts.Transfers;
+using SportsClubPlatform.Contracts.Transfers.Audit;
 
 namespace SportsClubPlatform.Api.Controllers
 {
@@ -42,6 +43,18 @@ namespace SportsClubPlatform.Api.Controllers
             {
                 return NotFound();
             }
+
+            return Ok(response);
+        }
+
+        [HttpGet("{id:int}/audit")]
+        [ProducesResponseType(typeof(IReadOnlyCollection<TransferAuditEntryResponse>), StatusCodes.Status200OK)]
+        public async Task<IActionResult> GetAuditTimeline(
+            int id,
+            CancellationToken cancellationToken)
+        {
+            IReadOnlyCollection<TransferAuditEntryResponse> response =
+                await _transferApplicationService.GetAuditTimelineAsync(id, cancellationToken);
 
             return Ok(response);
         }

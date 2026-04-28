@@ -6,6 +6,7 @@ using SportsClubPlatform.Application.Abstractions;
 using SportsClubPlatform.Infrastructure.Messaging.Consumers;
 using SportsClubPlatform.Infrastructure.Persistence;
 using SportsClubPlatform.Infrastructure.Services;
+using SportsClubPlatform.Infrastructure.Services.Auditing;
 
 namespace SportsClubPlatform.Infrastructure.Extensions
 {
@@ -26,6 +27,7 @@ namespace SportsClubPlatform.Infrastructure.Extensions
                 options.UseSqlite(connectionString));
 
             services.AddScoped<ITransferApplicationService, TransferApplicationService>();
+            services.AddScoped<ITransferAuditService, TransferAuditService>();
 
             services.AddMassTransit(busConfigurator =>
             {
