@@ -59,3 +59,35 @@ docs/
   architecture-decision.md
   bounded-contexts.md
   c4-model.md
+
+## Architecture Documentation
+
+Additional architecture documents are available in the `docs` folder:
+
+| Document | Description |
+|---|---|
+| `architecture-notes.md` | Initial requirement analysis |
+| `architecture-decision.md` | Architecture style decision |
+| `bounded-contexts.md` | DDD bounded contexts |
+| `context-map.md` | Context map between domains |
+| `c4-context.md` | C4 system context diagram |
+| `c4-container.md` | C4 container diagram |
+| `c4-component-transfer.md` | C4 component diagram for Transfer Management |
+| `transfer-flow.md` | Transfer orchestration sequence diagram |
+| `testing-strategy.md` | Testing strategy |
+| `architecture-summary.md` | Final architecture summary |
+
+
+
+## Demo Endpoints
+
+The following endpoints are useful for validating the PoC:
+
+| Method | Endpoint | Description |
+|---|---|---|
+| GET | `/api/health` | Basic API health status |
+| GET | `/api/clubs` | List seeded clubs and budgets |
+| GET | `/api/players` | List seeded players |
+| POST | `/api/transfers` | Submit a new transfer offer |
+| GET | `/api/transfers/{id}` | Get transfer status |
+| GET | `/api/transfers/{id}/audit` | Get transfer audit timeline |
