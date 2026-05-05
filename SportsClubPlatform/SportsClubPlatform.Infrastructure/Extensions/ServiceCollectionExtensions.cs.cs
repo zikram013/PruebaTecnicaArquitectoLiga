@@ -27,6 +27,7 @@ namespace SportsClubPlatform.Infrastructure.Extensions
                 options.UseSqlite(connectionString));
 
             services.AddScoped<ITransferApplicationService, TransferApplicationService>();
+            services.AddScoped<ICatalogApplicationService, CatalogApplicationService>();
             services.AddScoped<ITransferAuditService, TransferAuditService>();
 
             services.AddMassTransit(busConfigurator =>

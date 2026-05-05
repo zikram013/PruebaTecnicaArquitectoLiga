@@ -1,37 +1,44 @@
 ﻿using System.Text.Json;
 
-namespace SportsClubPlatform.Api.Middleware
+namespace SportsClubPlatform.Api.Middleware;
+
+/// <summary>
+/// Global exception middleware returning JSON error payloads.
+/// </summary>
+public sealed class GlobalExceptionMiddleware
 {
-    /// <summary>
-    /// Global exception middleware returning JSON error payloads.
-    /// </summary>
-    public sealed class GlobalExceptionMiddleware
+    private readonly RequestDelegate _next;
+    private readonly ILogger<GlobalExceptionMiddleware> _logger;
+
+    public GlobalExceptionMiddleware(
+        RequestDelegate next,
+        ILogger<GlobalExceptionMiddleware> logger)
     {
-        private readonly RequestDelegate _next;
+        _next = next;
+        _logger = logger;
+    }
 
-        public GlobalExceptionMiddleware(RequestDelegate next)
+    public async Task InvokeAsync(HttpContext context)
+    {
+        try
         {
-            _next = next;
+            await _next(context);
         }
-
-        public async Task InvokeAsync(HttpContext context)
+        catch (Exception exception)
         {
-            try
-            {
-                await _next(context);
-            }
-            catch (Exception exception)
-            {
-                context.Response.StatusCode = StatusCodes.Status400BadRequest;
-                context.Response.ContentType = "application/json";
+            _logger.LogError(exception, "Unhandled exception occurred.");
 
-                string payload = JsonSerializer.Serialize(new
-                {
-                    message = exception.Message
-                });
+            context.Response.StatusCode = StatusCodes.Status400BadRequest;
+            context.Response.ContentType = "application/json";
 
-                await context.Response.WriteAsync(payload);
-            }
+            string payload = JsonSerializer.Serialize(new
+            {
+                error = "BadRequest",
+                message = exception.Message,
+                traceId = context.TraceIdentifier
+            });
+
+            await context.Response.WriteAsync(payload);
         }
     }
 }
