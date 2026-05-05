@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SportsClubPlatform.Contracts")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+de9e875dbde226f8f3c90957948bd5a9d27b5b08")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a6d56876c857d42e256dce8b0f13222d409e40ce")]
 [assembly: System.Reflection.AssemblyProductAttribute("SportsClubPlatform.Contracts")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SportsClubPlatform.Contracts")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

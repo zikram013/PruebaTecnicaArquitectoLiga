@@ -24,14 +24,12 @@
 		<ProjectReference Include="..\..\src\SportsClubPlatform.Contracts\SportsClubPlatform.Contracts.csproj" />
 		<ProjectReference Include="..\..\src\SportsClubPlatform.Domain\SportsClubPlatform.Domain.csproj" />
 		<ProjectReference Include="..\..\src\SportsClubPlatform.Infrastructure\SportsClubPlatform.Infrastructure.csproj" />
+		<ProjectReference Include="..\SportsClubPlatform.Domain\SportsClubPlatform.Domain.csproj" />
+		<ProjectReference Include="..\SportsClubPlatform.Infrastructure\SportsClubPlatform.Infrastructure.csproj" />
 	</ItemGroup>
 
   <ItemGroup>
     <Using Include="Xunit" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Domain\" />
   </ItemGroup>
 
 </Project>
