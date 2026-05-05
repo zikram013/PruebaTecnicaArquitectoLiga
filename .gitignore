@@ -1,1 +1,17 @@
+# Visual Studio
 .vs/
+*.user
+*.suo
+
+# Build outputs
+bin/
+obj/
+
+# SQLite local database
+*.db
+*.db-shm
+*.db-wal
+
+# OS files
+.DS_Store
+Thumbs.db
